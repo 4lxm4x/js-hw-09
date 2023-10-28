@@ -2,6 +2,8 @@
 import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 //let SELECTED_DATE = null;
 
@@ -21,7 +23,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0].getTime() < options.defaultDate.getTime()) {
-      window.alert('Please choose a date in the future');
+      Notify.failure('Please choose a date in the future');
       return;
     }
     refs.startBtn.disabled = false;
