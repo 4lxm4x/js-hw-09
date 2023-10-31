@@ -51,7 +51,7 @@ function onStartClick() {
 
     return;
   }
-  Notify.info('ХУЙ!!!!');
+  Notify.info('Таймер запущен');
   // ============================
   //fp = flatpickr(refs.dateInput, options);
   const selectedDate = fp.selectedDates[0].getTime();
