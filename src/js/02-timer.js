@@ -28,10 +28,13 @@ const options = {
     refs.startBtn.disabled = false;
   },
 };
-
-const fp = flatpickr(refs.dateInput, options);
-
+//let fp = flatpickr(refs.dateInput, options);
+refs.dateInput.addEventListener('focus', onInputClick);
 refs.startBtn.addEventListener('click', onStartClick);
+
+function onInputClick() {
+  return (fp = flatpickr(refs.dateInput, options));
+}
 
 function onStartClick() {
   // ========= кусок кода для сброса таймера ===================
@@ -44,11 +47,12 @@ function onStartClick() {
     timer.isActive = false;
     refs.startBtn.textContent = 'Start';
     refs.startBtn.disabled = true;
+    flatpickr(refs.dateInput, options);
 
     return;
   }
   // ============================
-
+  //fp = flatpickr(refs.dateInput, options);
   const selectedDate = fp.selectedDates[0].getTime();
   timer.start(selectedDate);
 }
@@ -70,11 +74,15 @@ const timer = {
       1000,
       date
     );
+
     refs.startBtn.textContent = 'Stop/Reset';
     this.isActive = true;
+    refs.dateInput.disabled = true;
   },
   stop() {
     clearInterval(INTERVAL_ID);
+    this.isActive = false;
+    refs.dateInput.disabled = false;
   },
 };
 
