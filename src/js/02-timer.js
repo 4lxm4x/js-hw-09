@@ -51,6 +51,7 @@ function onStartClick() {
 
     return;
   }
+  Notify.info('ХУЙ!!!!');
   // ============================
   //fp = flatpickr(refs.dateInput, options);
   const selectedDate = fp.selectedDates[0].getTime();
