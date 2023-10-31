@@ -28,13 +28,8 @@ const options = {
     refs.startBtn.disabled = false;
   },
 };
-//let fp = flatpickr(refs.dateInput, options);
-refs.dateInput.addEventListener('focus', onInputClick);
 refs.startBtn.addEventListener('click', onStartClick);
-
-function onInputClick() {
-  return (fp = flatpickr(refs.dateInput, options));
-}
+let fp = flatpickr(refs.dateInput, options);
 
 function onStartClick() {
   // ========= кусок кода для сброса таймера ===================
@@ -47,18 +42,15 @@ function onStartClick() {
     timer.isActive = false;
     refs.startBtn.textContent = 'Start';
     refs.startBtn.disabled = true;
-    flatpickr(refs.dateInput, options);
+    fp = flatpickr(refs.dateInput, options);
 
     return;
   }
   Notify.info('Таймер запущен');
   // ============================
-  //fp = flatpickr(refs.dateInput, options);
   const selectedDate = fp.selectedDates[0].getTime();
   timer.start(selectedDate);
 }
-
-//таймер сначала делал функцией, но потом решил объектом. не знаю чего.
 
 const timer = {
   isActive: false,
