@@ -3,7 +3,7 @@ import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
+import BSN from 'bootstrap.native';
 let INTERVAL_ID = null; //глобальная переменная для доступа к интервалу
 
 const refs = {
@@ -48,6 +48,7 @@ function onStartClick() {
     return;
   }
   // ============================
+
   const selectedDate = fp.selectedDates[0].getTime();
   timer.start(selectedDate);
 }
